@@ -11,7 +11,7 @@ public class TestSumDouble extends CalculatorBaseTest {
     @DataProvider
     public Object[][] sumDoubleDataProvider() {
         return new Object[][] {
-            {2.9, -2.0, 0.9},
+            {2.5, -2.0, 0.5},
             {1.1, 9.9, 11.0},
             {-5.5, -5.5, -11.0}
         };
