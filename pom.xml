@@ -17,8 +17,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <checkstyle.version>8.42</checkstyle.version>
-
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+
+    <selenium-java.version>3.141.59</selenium-java.version>
+    <web-driver-manager.version>5.0.3</web-driver-manager.version>
   </properties>
 
 
@@ -46,6 +48,13 @@
       <id>homework01-mult-and-div-calculator-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/HW2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
   </profiles>
@@ -83,6 +92,21 @@
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/resources/com/epam/tc/hw1/calculator-1.0.jar</systemPath>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+    <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>${selenium-java.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${web-driver-manager.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 
