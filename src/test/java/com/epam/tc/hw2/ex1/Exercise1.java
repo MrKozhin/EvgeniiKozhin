@@ -29,7 +29,7 @@ public class Exercise1 {
         webDriverWait = new WebDriverWait(webDriver, 10);
         softAssert = new SoftAssert();
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+        webDriver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
 
         //        1. Open test site by URL
@@ -49,7 +49,6 @@ public class Exercise1 {
 
         webElement = webDriver.findElement(By.id("name"));
         webElement.click();
-
         webElement.sendKeys("Roman");
 
         webElement = webDriver.findElement(By.id("password"));

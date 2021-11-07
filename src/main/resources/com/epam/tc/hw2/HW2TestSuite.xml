@@ -7,9 +7,9 @@
     </classes>
   </test>
 
-<!--  <test name="Exercise 2 Test">-->
-<!--    <classes>-->
-<!--      <class name="com.epam.tc.hw2.ex2.Exercise2"/>-->
-<!--    </classes>-->
-<!--  </test>-->
+  <test name="Exercise 2 Test">
+    <classes>
+      <class name="com.epam.tc.hw2.ex2.Exercise2"/>
+    </classes>
+  </test>
 </suite>

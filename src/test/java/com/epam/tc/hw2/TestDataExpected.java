@@ -20,4 +20,11 @@ public class TestDataExpected {
         "Elements packs"
     );
 
+    public static final List<String> LOG_ROWS_EXPECTED = List.of(
+        "Water: condition changed to true",
+        "Wind: condition changed to true",
+        "metal: value changed to Selen",
+        "Colors: value changed to Yellow"
+    );
+
 }
