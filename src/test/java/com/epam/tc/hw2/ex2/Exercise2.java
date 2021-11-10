@@ -1,56 +1,23 @@
 package com.epam.tc.hw2.ex2;
 
-
 import static com.epam.tc.hw2.TestDataExpected.LOG_ROWS_EXPECTED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import java.util.concurrent.TimeUnit;
+import com.epam.tc.hw2.HW2BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 
-public class Exercise2 {
-    private WebDriver webDriver;
-    private WebElement webElement;
-    private WebDriverWait webDriverWait;
+public class Exercise2 extends HW2BaseTest {
+
 
 
     @Test
     public void exercise1Test() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(webDriver, 10);
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
-
-        //        1. Open test site by URL
-
-        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
 
         //        2. Assert Browser title
 
         assertThat(webDriver.getTitle()).isEqualTo("Home Page");
-
-        //        3. Perform login
-
-        webElement = webDriver.findElement(By.className("profile-photo"));
-        webElement.click();
-
-        webElement = webDriver.findElement(By.id("name"));
-        webElement.click();
-        webElement.sendKeys("Roman");
-
-        webElement = webDriver.findElement(By.id("password"));
-        webElement.click();
-        webElement.sendKeys("Jdi1234");
-
-        webElement = webDriver.findElement(By.id("login-button"));
-        webElement.click();
 
         //        4. Assert User name in the left-top side of screen that user is logged in
 
@@ -114,9 +81,6 @@ public class Exercise2 {
         String logRowYellow = webDriver.findElement(By.xpath("//li[contains(text(), 'Yellow')]")).getText();
         assertThat(logRowYellow).contains(LOG_ROWS_EXPECTED.get(3));
 
-        //        10. Close Browser
-
-        webDriver.close();
 
     }
 

@@ -52,9 +52,23 @@
     </profile>
 
     <profile>
-      <id>homework02-test-suite</id>
+      <id>homework02-all-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/HW2TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework02-ex01-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/Ex1TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework02-ex02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/Ex2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
   </profiles>

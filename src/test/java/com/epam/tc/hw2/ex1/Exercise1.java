@@ -3,67 +3,28 @@ package com.epam.tc.hw2.ex1;
 import static com.epam.tc.hw2.TestDataExpected.SIDEBAR_EXPECTED;
 import static com.epam.tc.hw2.TestDataExpected.TEXTS_EXPECTED;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.tc.hw2.HW2BaseTest;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
-public class Exercise1 {
-    private WebDriver webDriver;
-    private WebElement webElement;
-    private WebDriverWait webDriverWait;
-    private SoftAssert softAssert;
+public class Exercise1 extends HW2BaseTest {
+
 
 
     @Test
     public void exercise1Test() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(webDriver, 10);
-        softAssert = new SoftAssert();
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
-
-
-        //        1. Open test site by URL
-
-        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
-
 
         //        2. Assert Browser title
 
         softAssert.assertEquals(webDriver.getTitle(), "Home Page");
 
-
-        //        3. Perform login
-
-        webElement = webDriver.findElement(By.className("profile-photo"));
-        webElement.click();
-
-        webElement = webDriver.findElement(By.id("name"));
-        webElement.click();
-        webElement.sendKeys("Roman");
-
-        webElement = webDriver.findElement(By.id("password"));
-        webElement.click();
-        webElement.sendKeys("Jdi1234");
-
-        webElement = webDriver.findElement(By.id("login-button"));
-        webElement.click();
-
-
         //        4. Assert Username is logged in
 
         webElement = webDriver.findElement(By.cssSelector("#user-name"));
         softAssert.assertEquals(webElement.getText(), "ROMAN IOVLEV");
-
 
         //        5. Assert that there are 4 items on the header section are displayed, and they have proper texts
 
@@ -137,11 +98,8 @@ public class Exercise1 {
             .collect(Collectors.toList()), SIDEBAR_EXPECTED
         );
 
-
-        //        12. Close Browser
-
         softAssert.assertAll();
-        webDriver.close();
+
     }
 
 }
