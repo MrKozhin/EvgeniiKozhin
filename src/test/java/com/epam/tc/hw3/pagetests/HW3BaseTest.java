@@ -1,0 +1,45 @@
+package com.epam.tc.hw3.pagetests;
+
+import com.epam.tc.hw3.config.DriverManager;
+import com.epam.tc.hw3.pages.HomePage;
+import com.epam.tc.hw3.pages.LogInPage;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
+
+public abstract class HW3BaseTest {
+
+    protected WebDriver webDriver;
+    protected WebElement webElement;
+    protected SoftAssert softAssert;
+    protected LogInPage logInPage;
+    protected HomePage homePage;
+
+
+    @BeforeClass
+    public void setUpSuite() {
+        webDriver = new DriverManager().setUpDriver();
+        webDriver.manage().window().maximize();
+    }
+
+    @BeforeMethod
+    public void setUp() {
+        webDriver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+        logInPage = new LogInPage(webDriver);
+        homePage = new HomePage(webDriver);
+        softAssert = new SoftAssert();
+
+        logInPage.open()       //        1. Open test site by URL
+                 .logIn();     //        3. Perform login
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        softAssert.assertAll();
+        webDriver.quit();      //        12. Close Browser
+    }
+}

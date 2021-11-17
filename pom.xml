@@ -33,7 +33,6 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw1/AllCalculatorTest.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework01-sum-and-sub-calculator-test-suite</id>
       <properties>
@@ -43,7 +42,6 @@
         <activeByDefault>true</activeByDefault>
       </activation>
     </profile>
-
     <profile>
       <id>homework01-mult-and-div-calculator-test-suite</id>
       <properties>
@@ -57,18 +55,37 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/HW2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework02-ex01-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/Ex1TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework02-ex02-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/Ex2TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework03-all-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/HW3TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework03-ex01-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/Ex1TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework03-ex02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/Ex2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
   </profiles>
