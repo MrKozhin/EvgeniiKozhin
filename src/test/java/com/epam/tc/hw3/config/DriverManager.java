@@ -15,19 +15,12 @@ public class DriverManager {
                         .setup();
     }
 
-    public static WebDriver getSingletonInstance() {
-        if (driver == null) {
-            driver = new ChromeDriver();
-        }
-        return driver;
-    }
-
     public WebDriver setUpDriver() {
         setUpChromeDriver();
-        WebDriver webDriver = DriverManager.getSingletonInstance();
-        webDriverWait = new WebDriverWait(webDriver, 10);
+        driver = new ChromeDriver();
+        webDriverWait = new WebDriverWait(driver, 10);
 
-        return webDriver;
+        return driver;
     }
 
 

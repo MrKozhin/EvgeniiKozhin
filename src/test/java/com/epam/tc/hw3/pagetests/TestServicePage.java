@@ -2,23 +2,30 @@ package com.epam.tc.hw3.pagetests;
 
 import static com.epam.tc.hw3.data.TestDataExpected.HEADER_BUTTONS_EXPECTED;
 import static com.epam.tc.hw3.data.TestDataExpected.LOG_ROWS_EXPECTED;
-import static com.epam.tc.hw3.data.TestDataExpected.PAGE_TITLE_EXPECTED;
-import static com.epam.tc.hw3.data.TestDataExpected.USERNAME_EXPECTED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TestServicePage extends HW3BaseTest {
 
-    @Test
-    public void testServicePage() {
+    @DataProvider
+    public Object[][] buttonsTextDataProvider() {
+        return new Object[][] {
+            {"Home Page", "ROMAN IOVLEV"}
+        };
+    }
+
+
+    @Test(dataProvider = "buttonsTextDataProvider")
+    public void testServicePage(String title, String username) {
 
         //        2. Assert Browser title
-        assertThat(webDriver.getTitle()).isEqualTo(PAGE_TITLE_EXPECTED);
+        assertThat(webDriver.getTitle()).isEqualTo(title);
 
         //        4. Assert User name in the left-top side of screen that user is logged in
         assertThat(logInPage.getLoggedInUsername().getText())
-            .isEqualTo(USERNAME_EXPECTED);
+            .isEqualTo(username);
 
         assertThat(logInPage.getLoggedInUsername().isDisplayed())
             .isTrue();

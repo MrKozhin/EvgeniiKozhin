@@ -71,23 +71,24 @@
     <profile>
       <id>homework03-all-test-suite</id>
       <properties>
-        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/HW3TestSuite.xml</suite.xml.name>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/AllPagesTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
 
     <profile>
       <id>homework03-ex01-test-suite</id>
       <properties>
-        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/Ex1TestSuite.xml</suite.xml.name>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/TestSuiteEx1.xml</suite.xml.name>
       </properties>
     </profile>
 
     <profile>
       <id>homework03-ex02-test-suite</id>
       <properties>
-        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/Ex2TestSuite.xml</suite.xml.name>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/TestSuiteEx2.xml</suite.xml.name>
       </properties>
     </profile>
+
   </profiles>
 
 

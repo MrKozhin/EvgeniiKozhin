@@ -6,7 +6,7 @@ import com.epam.tc.hw3.pages.LogInPage;
 import com.epam.tc.hw3.pages.ServicePage;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
@@ -21,13 +21,14 @@ public abstract class HW3BaseTest {
 
 
     @BeforeClass
-    public void setUpSuite() {
+    public void prepareToStart() {
         webDriver = new DriverManager().setUpDriver();
         webDriver.manage().window().maximize();
     }
 
     @BeforeMethod
     public void setUp() {
+
         webDriver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
         logInPage = new LogInPage(webDriver);
         homePage = new HomePage(webDriver);
@@ -38,10 +39,11 @@ public abstract class HW3BaseTest {
                  .logIn();     //        3. Perform login
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() {
-
-        webDriver.quit();      //        12. Close Browser
+        if (webDriver != null) {
+            webDriver.quit();      //        12. Close Browser
+        }
     }
 
 }
