@@ -3,9 +3,9 @@ package com.epam.tc.hw3.pagetests;
 import com.epam.tc.hw3.config.DriverManager;
 import com.epam.tc.hw3.pages.HomePage;
 import com.epam.tc.hw3.pages.LogInPage;
+import com.epam.tc.hw3.pages.ServicePage;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -14,10 +14,10 @@ import org.testng.asserts.SoftAssert;
 public abstract class HW3BaseTest {
 
     protected WebDriver webDriver;
-    protected WebElement webElement;
     protected SoftAssert softAssert;
     protected LogInPage logInPage;
     protected HomePage homePage;
+    protected ServicePage servicePage;
 
 
     @BeforeClass
@@ -31,6 +31,7 @@ public abstract class HW3BaseTest {
         webDriver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
         logInPage = new LogInPage(webDriver);
         homePage = new HomePage(webDriver);
+        servicePage = new ServicePage(webDriver);
         softAssert = new SoftAssert();
 
         logInPage.open()       //        1. Open test site by URL
@@ -39,7 +40,8 @@ public abstract class HW3BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        softAssert.assertAll();
+
         webDriver.quit();      //        12. Close Browser
     }
+
 }

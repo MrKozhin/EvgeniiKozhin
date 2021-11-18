@@ -1,7 +1,5 @@
 package com.epam.tc.hw3.components;
 
-import static com.epam.tc.hw3.util.PropertyUtil.USERNAME;
-
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,17 +27,16 @@ public class HeaderMenu {
     private WebElement serviceButton;
     @FindBy(linkText = "Metals & Colors")
     private WebElement metalsAndColorsButton;
-
+    @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li")
+    private List<WebElement> headerMenuElementsList;
+    @FindBy(xpath = "//a[contains(text(),'Different elements')]")
+    private WebElement differentElementsButton;
 
 
     public HeaderMenu(WebDriver driver) {
         this.webDriver = driver;
         PageFactory.initElements(webDriver, this);
     }
-
-
-
-
 
 
     public void clickUserIcon() {
@@ -78,22 +75,22 @@ public class HeaderMenu {
         return metalsAndColorsButton;
     }
 
-
-
-
-
-
-
-    @FindBy(xpath = "//ul[contains(@class, 'm-l8')]/li")
-    private List<WebElement> headerMenuElementsList;
-
-    public void clickHeaderMenuItem(String headerMenuItemText) {
+    public HeaderMenu clickHeaderMenuItem(String headerMenuItemText) {
         for (WebElement item : headerMenuElementsList) {
             if (headerMenuItemText.equals(item.getText())) {
                 item.click();
                 break;
             }
         }
+        return this;
     }
+
+    public HeaderMenu clickDifferentElementsButton() {
+        differentElementsButton.click();
+        return this;
+    }
+
+
+
 
 }

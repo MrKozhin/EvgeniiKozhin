@@ -7,8 +7,6 @@ import static com.epam.tc.hw3.util.PropertyUtil.USERNAME;
 import com.epam.tc.hw3.components.HeaderMenu;
 import com.epam.tc.hw3.components.LeftSideMenu;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 public class LogInPage extends HeaderMenu {
     WebDriver webDriver;
@@ -19,8 +17,7 @@ public class LogInPage extends HeaderMenu {
         super(driver);
         this.webDriver = driver;
         this.headerMenu = new HeaderMenu(driver);
-        this.leftSideMenu = new LeftSideMenu();
-        //PageFactory.initElements(webDriver, this);
+        this.leftSideMenu = new LeftSideMenu(driver);
     }
 
     public HeaderMenu getHeaderMenu() {
@@ -36,12 +33,11 @@ public class LogInPage extends HeaderMenu {
         return this;
     }
 
-    public LogInPage logIn() {
+    public void logIn() {
         headerMenu.clickUserIcon();
         headerMenu.nameSendKeys(USERNAME);
         headerMenu.passwordSendKeys(PASSWORD);
         headerMenu.clickLogInButton();
-        return this;
     }
 
 
