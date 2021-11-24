@@ -82,7 +82,7 @@ public class FailedTest extends HW4FailedBaseTest {
             .mainPageTextsList()
             .stream()
             .map(WebElement::getText)
-            .collect(Collectors.toList()), TEXTS_EXPECTED
+            .collect(Collectors.toList()), SIDEBAR_EXPECTED
         );
 
 
