@@ -1,17 +1,20 @@
 package com.epam.tc.hw4.listener;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
-import java.io.InputStream;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 
-public class Listener {
+public class Listener implements ITestListener {
 
-    public void attachScreenshotFromInputStream(final String nameOfAttachment, InputStream screenshotIS) {
-        Allure.addAttachment(nameOfAttachment, screenshotIS);
-    }
+    @Override
+    public void onTestFailure(ITestResult result) {
+        ITestListener.super.onTestFailure(result);
+        Object driver = result.getTestContext().getAttribute("driver");
 
-    @Attachment
-    public String attachReport(String report) {
-        return report;
+        if (driver != null) {
+            AttachmentUtility.makeSreenshotAttachment("Fail screenshot",
+                ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+        }
     }
 }
