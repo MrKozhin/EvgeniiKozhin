@@ -58,51 +58,59 @@ public class ServicePageSteps {
 
     @Step("6. Select checkbox Water and Wind")
     public ServicePageSteps selectWaterAndWindCheckboxes() {
-        //        7. Select radio Selen
-        //        8. Select in dropdown Yellow
         servicePage.clickWaterCheckBox()
-                   .clickWindCheckBox()
-                   .clickSelenElement()
-                   .clickDropdownYellow();
+                   .clickWindCheckBox();
         return this;
     }
 
-    @Step("9. Assert that")
-    public ServicePageSteps checkLogRowForWaterAndWind() {
-        //        for each checkbox there is an individual log row and value is corresponded to the status of checkbox
+    @Step("7. Select radio Selen")
+    public ServicePageSteps selectSelenCheckbox() {
+        servicePage.clickSelenElement();
+        return this;
+    }
+
+    @Step("8. Select in dropdown Yellow")
+    public ServicePageSteps selectDropdownYellow() {
+        servicePage.clickDropdownYellow();
+        return this;
+    }
+
+
+
+    @Step("9.1. Assert that for each checkbox there is an individual log row "
+        + "\nand value is corresponded to the status of checkbox")
+    public ServicePageSteps checkLogRowForWaterAndWind(String water, String wind) {
 
         assertThat(servicePage
             .getLogRowWater()
             .getText())
-            .contains(LOG_ROWS_EXPECTED.get(0)
-            );
+            .contains(water);
 
         assertThat(servicePage
             .getLogRowWind()
             .getText())
-            .contains(LOG_ROWS_EXPECTED.get(1)
-            );
+            .contains(wind);
         return this;
     }
 
-    @Step("...for radio button there is a log row and value is corresponded to the status of radio button")
-    public ServicePageSteps checkLogRowForRadioButton() {
+    @Step("9.2. Assert that for radio button there is a log row "
+        + "\nand value is corresponded to the status of radio button")
+    public ServicePageSteps checkLogRowForRadioButton(String radio) {
         assertThat(servicePage
             .getLogRowSelen()
             .getText())
-            .contains(LOG_ROWS_EXPECTED.get(2)
-            );
+            .contains(radio);
         return this;
     }
 
-    @Step("...for dropdown there is a log row and value is corresponded to the selected value.")
-    public ServicePageSteps checkLogRowForDropdown() {
+    @Step("9.3. Assert that for dropdown there is a log row and value is corresponded to the selected value.")
+    public ServicePageSteps checkLogRowForDropdown(String yellow) {
         //
 
         assertThat(servicePage
             .getLogRowYellow()
             .getText())
-            .contains(LOG_ROWS_EXPECTED.get(3)
+            .contains(yellow
             );
         return this;
     }

@@ -70,7 +70,6 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/Ex2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework03-all-test-suite</id>
       <properties>
@@ -91,25 +90,32 @@
     </profile>
 
     <profile>
-    <id>homework04-all-test-suite</id>
-    <properties>
-      <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4AllPagesTestSuite.xml</suite.xml.name>
-    </properties>
-  </profile>
+      <id>homework04-all-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4AllPagesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
-  <profile>
-    <id>homework04-ex01-test-suite</id>
-    <properties>
-      <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex1TestSuite.xml</suite.xml.name>
-    </properties>
-  </profile>
+    <profile>
+      <id>homework04-ex01-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex1TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
-  <profile>
-    <id>homework04-ex02-test-suite</id>
-    <properties>
-      <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex2TestSuite.xml</suite.xml.name>
-    </properties>
-  </profile>
+    <profile>
+      <id>homework04-ex02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex2TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework04-failed-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4FailedTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
   </profiles>
 
 

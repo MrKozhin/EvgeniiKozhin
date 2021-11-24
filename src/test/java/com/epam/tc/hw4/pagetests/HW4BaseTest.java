@@ -1,7 +1,6 @@
 package com.epam.tc.hw4.pagetests;
 
 import com.epam.tc.hw3.config.DriverManager;
-import com.epam.tc.hw3.pages.ServicePage;
 import com.epam.tc.hw4.steps.HomePageSteps;
 import com.epam.tc.hw4.steps.ServicePageSteps;
 import java.time.Duration;
