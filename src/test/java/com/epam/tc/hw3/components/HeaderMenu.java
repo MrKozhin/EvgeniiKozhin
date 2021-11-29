@@ -31,6 +31,8 @@ public class HeaderMenu {
     private List<WebElement> headerMenuElementsList;
     @FindBy(xpath = "//a[contains(text(),'Different elements')]")
     private WebElement differentElementsButton;
+    @FindBy(css = "ul.dropdown-menu a:first-child")
+    private List<WebElement> serviceDropdownItemList;
 
 
     public HeaderMenu(WebDriver driver) {
@@ -77,7 +79,7 @@ public class HeaderMenu {
 
     public HeaderMenu clickHeaderMenuItem(String headerMenuItemText) {
         for (WebElement item : headerMenuElementsList) {
-            if (headerMenuItemText.equals(item.getText())) {
+            if (headerMenuItemText.equalsIgnoreCase(item.getText())) {
                 item.click();
                 break;
             }
@@ -90,7 +92,15 @@ public class HeaderMenu {
         return this;
     }
 
-
+    public HeaderMenu clickServiceDropdownMenuItem(String serviceDropdownItemText) {
+        for (WebElement item : serviceDropdownItemList) {
+            if (serviceDropdownItemText.equalsIgnoreCase(item.getText())) {
+                item.click();
+                break;
+            }
+        }
+        return this;
+    }
 
 
 }
