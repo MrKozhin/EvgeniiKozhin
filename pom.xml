@@ -9,18 +9,22 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
 
     <testng.version>7.4.0</testng.version>
-
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+    <assertj.version>3.21.0</assertj.version>
+    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
 
-    <selenium-java.version>3.141.59</selenium-java.version>
+    <selenium-java.version>4.0.0</selenium-java.version>
     <web-driver-manager.version>5.0.3</web-driver-manager.version>
+
+    <allure.version>2.16.1</allure.version>
+    <aspectj.version>1.9.8.RC2</aspectj.version>
+    <allure-maven-plugin.version>2.10.0</allure-maven-plugin.version>
   </properties>
 
 
@@ -48,7 +52,6 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw1/MultAndDivCalculatorTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework02-all-test-suite</id>
       <properties>
@@ -67,21 +70,18 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw2/Ex2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework03-all-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/AllPagesTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework03-ex01-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/TestSuiteEx1.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework03-ex02-test-suite</id>
       <properties>
@@ -89,6 +89,33 @@
       </properties>
     </profile>
 
+    <profile>
+      <id>homework04-all-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4AllPagesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework04-ex01-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex1TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework04-ex02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex2TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework04-failed-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4FailedTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
   </profiles>
 
 
@@ -106,14 +133,14 @@
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.0.0-M5</version>
+      <version>${surefire-plugin.version}</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.21.0</version>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -139,6 +166,23 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+
+
   </dependencies>
 
 
@@ -146,8 +190,6 @@
 
   <build>
     <plugins>
-
-
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -182,22 +224,52 @@
         </executions>
       </plugin>
 
-
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
+
         <configuration>
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
+
           <suiteXmlFiles>
             <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
 
-
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven-plugin.version}</version>
+      </plugin>
 
     </plugins>
   </build>
+
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven-plugin.version}</version>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>
