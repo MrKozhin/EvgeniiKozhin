@@ -33,7 +33,6 @@
 
 
   <profiles>
-
     <profile>
       <id>homework01-all-calculator-test-suite</id>
       <properties>
@@ -91,28 +90,24 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/TestSuiteEx2.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-all-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4AllPagesTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-ex01-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex1TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-ex02-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-failed-test-suite</id>
       <properties>
@@ -120,7 +115,33 @@
       </properties>
     </profile>
 
+    <profile>
+      <id>homework05-all-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5AllTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
+    <profile>
+      <id>homework05-ex01-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5Ex1TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework05-ex02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5Ex2TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework05-ex03-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5Ex3TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
 
 
   </profiles>

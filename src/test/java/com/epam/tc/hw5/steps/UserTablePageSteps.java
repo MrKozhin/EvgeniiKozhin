@@ -4,6 +4,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import java.util.List;
 import java.util.Map;
 import org.testng.asserts.SoftAssert;
@@ -48,7 +50,7 @@ public class UserTablePageSteps extends AbstractBaseStep {
     }
 
     @And("^droplist should contain value in column Type for user Roman$")
-    public void checkDropdownElementsForUser(DataTable dataTable) {
+    public void checkDropdownElementsForUserRoman(DataTable dataTable) {
         List<String> listExpected = dataTable.asList(String.class);
         SoftAssert softAssert = new SoftAssert();
 
@@ -58,6 +60,18 @@ public class UserTablePageSteps extends AbstractBaseStep {
             );
         }
         softAssert.assertAll();
+    }
+
+    @When("I select 'vip' checkbox for \"Sergey Ivan\"")
+    public void selectVipCheckboxForUserIvan() {
+        userTablePage.clickCheckboxSergeyIvan();
+    }
+
+    @Then("1 log row has {string} text in log section")
+    public void checkLogRowForUserIvan(String logRow) {
+        assertThat(userTablePage.getLogsAsLitOfStrings(logRow)
+                                .get(0)).contains(logRow);
+
     }
 
 }

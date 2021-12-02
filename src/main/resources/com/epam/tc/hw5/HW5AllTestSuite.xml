@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Homework 05 All Test Suite">
+
+  <test name=" Different Elements Page and User Table Page Test">
+    <classes>
+      <class name="com.epam.tc.hw5.TestRunnerEx1"/>
+      <class name="com.epam.tc.hw5.TestRunnerEx2"/>
+      <class name="com.epam.tc.hw5.TestRunnerEx3"/>
+    </classes>
+  </test>
+</suite>

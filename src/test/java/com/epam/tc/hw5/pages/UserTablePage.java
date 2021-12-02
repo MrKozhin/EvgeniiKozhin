@@ -25,6 +25,10 @@ public class UserTablePage extends HeaderMenu {
     private List<WebElement> tableNumbersList;
     @FindBy(xpath = "//td[text()='1'] / following-sibling :: td / descendant :: option")
     private List<WebElement> romanDropdownElements;
+    @FindBy(css = "input[type='checkbox'][id='ivan']")
+    private WebElement sergeyIvanCheckbox;
+    @FindBy(css = "ul[class*='logs'] li")
+    private List<WebElement> logsAsList;
 
 
     public UserTablePage(WebDriver driver) {
@@ -81,5 +85,16 @@ public class UserTablePage extends HeaderMenu {
         return romanDropdownElements.stream()
                                     .map(WebElement::getText)
                                     .collect(Collectors.toList());
+    }
+
+    public void clickCheckboxSergeyIvan() {
+        sergeyIvanCheckbox.click();
+    }
+
+    public List<String> getLogsAsLitOfStrings(String log) {
+        return logsAsList.stream()
+                         .map(webElement -> webElement.getText().replaceAll("\n", " "))
+                         .filter(string -> string.contains(log))
+                         .collect(Collectors.toList());
     }
 }
