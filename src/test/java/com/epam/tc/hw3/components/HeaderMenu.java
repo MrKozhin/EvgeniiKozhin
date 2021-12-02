@@ -31,7 +31,7 @@ public class HeaderMenu {
     private List<WebElement> headerMenuElementsList;
     @FindBy(xpath = "//a[contains(text(),'Different elements')]")
     private WebElement differentElementsButton;
-    @FindBy(css = "ul.dropdown-menu a:first-child")
+    @FindBy(css = "ul.dropdown-menu a")
     private List<WebElement> serviceDropdownItemList;
 
 

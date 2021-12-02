@@ -2,25 +2,62 @@ package com.epam.tc.hw5.steps;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.epam.tc.hw3.pages.LogInPage;
-import com.epam.tc.hw5.pages.UserTablePage;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+import java.util.List;
+import java.util.Map;
+import org.testng.asserts.SoftAssert;
 
-public class UserTablePageSteps {
+public class UserTablePageSteps extends AbstractBaseStep {
 
-    protected LogInPage logInPage;
-    protected WebDriver webDriver;
-    protected UserTablePage userTablePage;
-
-    public UserTablePageSteps(WebDriver driver) {
-        this.webDriver = driver;
-        this.logInPage = new LogInPage(driver);
-        this.userTablePage = new UserTablePage(driver);
+    @And("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
+    public void checkAmountOfDropdowns(int dropdowns) {
+        assertThat(userTablePage.getDropdownsList().size()).isEqualTo(dropdowns);
     }
 
+    @And("{int} Usernames should be displayed on Users Table on User Table Page")
+    public void checkAmountOfUsernames(int usernames) {
+        assertThat(userTablePage.getUsernamesList().size()).isEqualTo(usernames);
+    }
+
+    @And("{int} Description texts under images should be displayed on Users Table on User Table Page")
+    public void checkAmountOfImageTextDescriptions(int textDescriptions) {
+        assertThat(userTablePage.getClearedDescriptionTextsList().size()).isEqualTo(textDescriptions);
+    }
+
+    @And("{int} checkboxes should be displayed on Users Table on User Table Page")
+    public void checkAmountOfVipCheckboxes(int checkboxes) {
+        assertThat(userTablePage.getVipCheckboxesList().size()).isEqualTo(checkboxes);
+    }
+
+    @And("User table should contain following values:")
+    public void checkUserTableValues(DataTable dataTable) {
+        SoftAssert softAssert = new SoftAssert();
+        List<Map<String, String>> userTable = dataTable.asMaps(String.class, String.class);
+
+        softAssert.assertEquals(userTablePage.getTableNumbersList(),
+            userTablePage.getNumberColumnExpected(userTable)
+        );
+        softAssert.assertEquals(userTablePage.getUsernamesList(),
+            userTablePage.getUserColumnExpected(userTable)
+        );
+        softAssert.assertEquals(userTablePage.getClearedDescriptionTextsList(),
+            userTablePage.getDescriptionColumnExpected(userTable)
+        );
+        softAssert.assertAll();
+    }
+
+    @And("^droplist should contain value in column Type for user Roman$")
+    public void checkDropdownElementsForUser(DataTable dataTable) {
+        List<String> listExpected = dataTable.asList(String.class);
+        SoftAssert softAssert = new SoftAssert();
+
+        for (int n = 0; n < userTablePage.getRomanDropdownList().size(); n++) {
+            softAssert.assertEquals(userTablePage.getRomanDropdownList().get(n),
+                listExpected.get(n + 1)
+            );
+        }
+        softAssert.assertAll();
+    }
 
 }
