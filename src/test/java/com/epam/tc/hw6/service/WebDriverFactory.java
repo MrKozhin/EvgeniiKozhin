@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public final class WebDriverFactory {
@@ -45,6 +47,10 @@ public final class WebDriverFactory {
                 driver = createFirefoxDriver();
                 break;
 
+            case OPERA:
+                driver = createOperaDriver();
+                break;
+
             default:
                 throw new IllegalBrowserException();
         }
@@ -61,6 +67,11 @@ public final class WebDriverFactory {
         return new FirefoxDriver();
     }
 
+    private static WebDriver createOperaDriver() {
+        WebDriverManager.operadriver().setup();
+        return new OperaDriver();
+    }
+
     //REMOTE
     private static WebDriver createRemoteWebDriver(final Browser browser) {
         Capabilities capabilities;
@@ -71,6 +82,10 @@ public final class WebDriverFactory {
 
             case FIREFOX:
                 capabilities = createFirefoxCapabilities();
+                break;
+
+            case OPERA:
+                capabilities = createOperaCapabilities();
                 break;
 
             default:
@@ -93,6 +108,11 @@ public final class WebDriverFactory {
     private static Capabilities createFirefoxCapabilities() {
         return new FirefoxOptions();
     }
+
+    private static Capabilities createOperaCapabilities() {
+        return new OperaOptions();
+    }
+
 
 
 }

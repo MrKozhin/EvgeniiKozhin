@@ -19,7 +19,7 @@
     <checkstyle.version>8.42</checkstyle.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
 
-    <selenium-java.version>4.0.0</selenium-java.version>
+    <selenium-java.version>4.1.0</selenium-java.version>
     <web-driver-manager.version>5.0.3</web-driver-manager.version>
 
     <allure.version>2.16.1</allure.version>
