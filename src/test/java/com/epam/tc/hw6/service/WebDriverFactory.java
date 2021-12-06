@@ -51,7 +51,6 @@ public final class WebDriverFactory {
         return driver;
     }
 
-
     private static WebDriver createChromeDriver() {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
@@ -76,7 +75,6 @@ public final class WebDriverFactory {
 
             default:
                 throw new IllegalBrowserException();
-
         }
 
         WebDriver driver;
@@ -85,7 +83,6 @@ public final class WebDriverFactory {
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-
         return driver;
     }
 
