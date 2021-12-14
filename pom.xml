@@ -25,12 +25,14 @@
     <allure.version>2.16.1</allure.version>
     <aspectj.version>1.9.8.RC2</aspectj.version>
     <allure-maven-plugin.version>2.10.0</allure-maven-plugin.version>
+
+    <cucumber-java.version>7.0.0</cucumber-java.version>
+    <cucumber-testng.version>7.0.0</cucumber-testng.version>
   </properties>
 
 
 
   <profiles>
-
     <profile>
       <id>homework01-all-calculator-test-suite</id>
       <properties>
@@ -88,34 +90,60 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw3/TestSuiteEx2.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-all-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4AllPagesTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-ex01-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex1TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-ex02-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4Ex2TestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
     <profile>
       <id>homework04-failed-test-suite</id>
       <properties>
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw4/HW4FailedTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
+
+    <profile>
+      <id>homework05-all-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5AllTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework05-ex01-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5Ex1TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework05-ex02-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5Ex2TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>homework05-ex03-test-suite</id>
+      <properties>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw5/HW5Ex3TestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+
+
   </profiles>
 
 
@@ -181,6 +209,19 @@
       <scope>runtime</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber-java.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber-testng.version}</version>
+    </dependency>
 
 
   </dependencies>
