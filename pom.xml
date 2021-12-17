@@ -148,13 +148,13 @@
         <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw6/HW6AllTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
+
     <profile>
-      <id>homework06-ex02-test-suite</id>
+      <id>homework07-test-suite</id>
       <properties>
-        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw6/HW6AllTestSuite.xml</suite.xml.name>
+        <suite.xml.name>${project.basedir}/src/main/resources/com/epam/tc/hw7/HW7MetalsAndColorsPageTestSuite.xml</suite.xml.name>
       </properties>
     </profile>
-
 
   </profiles>
 

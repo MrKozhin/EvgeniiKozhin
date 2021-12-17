@@ -3,14 +3,11 @@ package com.epam.tc.hw7.composite;
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.composite.Section;
-import com.epam.jdi.light.elements.interfaces.common.IsText;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
-import com.epam.jdi.light.ui.html.elements.common.Text;
 import com.epam.tc.hw7.entities.MetalsAndColorsDataEntity;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.openqa.selenium.WebElement;
 
 public class ResultSection extends Section {
 
@@ -27,7 +24,7 @@ public class ResultSection extends Section {
         return Arrays.asList(
             "Summary: " + (Integer.parseInt(data.summary.get(0)) + Integer.parseInt(data.summary.get(1))),
             "Elements: " + String.join(", ", data.elements),
-            "Color: " + data.colors,
+            "Color: " + data.color,
             "Metal: " + data.metals,
             "Vegetables: " + String.join(", ", data.vegetables)
         );

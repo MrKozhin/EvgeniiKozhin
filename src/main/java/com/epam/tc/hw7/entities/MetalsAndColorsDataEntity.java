@@ -6,7 +6,7 @@ import java.util.List;
 public class MetalsAndColorsDataEntity extends DataClass<MetalsAndColorsDataEntity> {
     public List<String> summary;
     public List<String> elements;
-    public String colors;
+    public String color;
     public String metals;
     public List<String> vegetables;
 

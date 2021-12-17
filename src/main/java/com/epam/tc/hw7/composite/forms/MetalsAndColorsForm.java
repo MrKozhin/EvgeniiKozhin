@@ -7,7 +7,6 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import com.epam.jdi.light.ui.html.elements.complex.DataListOptions;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 import com.epam.tc.hw7.complex.VegetablesMultiDropdown;
 import com.epam.tc.hw7.entities.MetalsAndColorsDataEntity;
@@ -17,12 +16,16 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataEntity> {
     public static RadioButtons summary;
 
     @JDropdown(root = "#colors",
+               value = ".filter-option",
                list = "li",
                expand = ".caret")
-    public static Dropdown colors;
+    public static Dropdown color;
 
-    @UI("#metals input")
-    public static DataListOptions metals;
+    @JDropdown(root = "#metals",
+               value = ".filter-option",
+               list = "li",
+               expand = ".caret")
+    public static Dropdown metals;
 
     public static VegetablesMultiDropdown vegetables;
 
@@ -36,7 +39,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataEntity> {
     public void submit(MetalsAndColorsDataEntity data) {
         summary.select(data.summary.get(0), data.summary.get(1));
         elements.select(data.elements.toArray(new String[] {}));
-        colors.select(data.colors);
+        color.select(data.color);
         metals.select(data.metals);
         VegetablesMultiDropdown.customSelect(data.vegetables);
         submitFormButton.click();
