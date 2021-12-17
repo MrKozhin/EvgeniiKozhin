@@ -9,8 +9,7 @@ import java.io.FileReader;
 import org.testng.annotations.DataProvider;
 
 public class MetalsAndColorsDataProvider {
-    private static final String JSON_DATA_SET =
-        "src/test/resources/com/epam/tc/hw7/JDI_ex8_metalsColorsDataSet.json";
+    private static final String JSON_DATA_SET = "src/test/resources/com/epam/tc/hw7/JDI_ex8_metalsColorsDataSet.json";
 
     @DataProvider(name = "JSON Data Provider")
     public static Object[][] getMetalColorData() throws FileNotFoundException {

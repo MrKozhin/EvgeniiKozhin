@@ -1,12 +1,12 @@
 package com.epam.tc.hw7;
 
+import static com.epam.tc.hw7.AssertResultSection.assertResultSection;
 import static com.epam.tc.hw7.composite.pages.JdiMetalsAndColorsPage.metalsAndColorsForm;
 import static com.epam.tc.hw7.entities.User.ROMAN;
 
 import com.epam.jdi.light.driver.WebDriverUtils;
 import com.epam.jdi.light.elements.init.PageFactory;
 import com.epam.tc.hw7.entities.MetalsAndColorsDataEntity;
-import com.epam.tc.hw7.entities.User;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -29,11 +29,10 @@ public class TestMetalsAndColorsPage {
     }
 
     @Test(dataProviderClass = MetalsAndColorsDataProvider.class, dataProvider = "JSON Data Provider")
-    public void testMetalsAndColors(MetalsAndColorsDataEntity metalsAndColorsDataEntity) {
+    public void testMetalsAndColors(MetalsAndColorsDataEntity data) {
         JdiSite.homePage.openMetalsAndColorsPage();
-        metalsAndColorsForm.submit(metalsAndColorsDataEntity);
-
-
+        metalsAndColorsForm.submit(data);
+        assertResultSection(data);
     }
 
     @AfterSuite(alwaysRun = true)

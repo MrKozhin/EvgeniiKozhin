@@ -26,7 +26,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataEntity> {
 
     public static VegetablesMultiDropdown vegetables;
 
-    @UI(".checkbox input")
+    @UI("input[type=checkbox]")
     public static Checklist elements;
 
     @UI("#submit-button")
