@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Homework 06 All Test Suite">
+
+  <test name="Homework 06 Homepage and Service Page Test">
+    <classes>
+      <class name="com.epam.tc.hw6.test.HW6TestHomePage"/>
+      <class name="com.epam.tc.hw6.test.HW6TestServicePage"/>
+    </classes>
+  </test>
+</suite>
