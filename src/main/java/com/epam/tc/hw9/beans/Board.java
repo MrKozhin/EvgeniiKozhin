@@ -12,6 +12,13 @@ public class Board {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("desc")
+    @Expose
+    private String desc;
+    @SerializedName("prefs")
+    @Expose
+    private Prefs prefs;
+
 
     public String getId() {
         return id;
@@ -19,5 +26,13 @@ public class Board {
 
     public String getName() {
         return name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public Prefs getPrefs() {
+        return prefs;
     }
 }
