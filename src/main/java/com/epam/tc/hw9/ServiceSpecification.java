@@ -26,7 +26,7 @@ public class ServiceSpecification {
 
     public static ResponseSpecification responseSpecification() {
         return new ResponseSpecBuilder()
-            .expectResponseTime(lessThan(500L))
+            .expectResponseTime(lessThan(600L))
             .build();
     }
 
