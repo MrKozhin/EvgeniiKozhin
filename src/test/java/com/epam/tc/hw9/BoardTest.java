@@ -1,8 +1,10 @@
 package com.epam.tc.hw9;
 
 import static com.epam.tc.hw9.BoardApi.createBoard;
+import static com.epam.tc.hw9.BoardApi.createBoardList;
 import static com.epam.tc.hw9.BoardApi.deleteBoard;
 import static com.epam.tc.hw9.BoardApi.getBoard;
+import static com.epam.tc.hw9.BoardApi.getBoardLists;
 import static com.epam.tc.hw9.BoardApi.getBoardResponse;
 import static com.epam.tc.hw9.BoardApi.updateBoard;
 import static com.epam.tc.hw9.ServiceSpecification.generateRandomString;
@@ -12,8 +14,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 import com.epam.tc.hw9.beans.Board;
+import com.epam.tc.hw9.beans.BoardList;
 import com.epam.tc.hw9.data.TrelloApiDataProvider;
 import io.restassured.response.Response;
+import java.util.List;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -27,6 +31,7 @@ public class BoardTest {
     protected String randomBoardNameForUpdate;
     protected String randomBoardDescription;
     protected String randomBoardDescriptionForUpdate;
+    protected String randomBoardListName;
     protected ApiBuilder apiBuilder;
     protected Board createdBoard;
 
@@ -42,7 +47,7 @@ public class BoardTest {
     @BeforeMethod
     public void beforeTest() {
         apiBuilder = new ApiBuilder();
-        apiBuilder.setBoardName(randomBoardName)
+        apiBuilder.setBoardOrListName(randomBoardName)
                   .setDescription(randomBoardDescription)
                   .setBackground("pink");
         createdBoard = createBoard(apiBuilder);
@@ -54,16 +59,6 @@ public class BoardTest {
     }
 
     @Test
-    public void setBoardDescriptionTest() {
-        assertThat(createdBoard.getDesc(), equalTo(randomBoardDescription));
-    }
-
-    @Test
-    public void boardBackgroundTest() {
-        assertThat(createdBoard.getPrefs().getBackground(), equalTo("pink"));
-    }
-
-    @Test
     public void getBoardTest() {
         Board board = getBoard(createdBoard.getId());
         assertThat(board.getName(), equalTo(randomBoardName));
@@ -71,7 +66,7 @@ public class BoardTest {
 
     @Test
     public void deleteBoardTest() {
-        Board board = createBoard(new ApiBuilder().setBoardName("Board for delete"));
+        Board board = createBoard(new ApiBuilder().setBoardOrListName("Board for delete"));
 
         deleteBoard(board.getId());
 
@@ -84,11 +79,34 @@ public class BoardTest {
         randomBoardNameForUpdate = generateRandomString();
         randomBoardDescriptionForUpdate = generateRandomString();
 
-        createdBoard = updateBoard(createdBoard.getId(), apiBuilder.setBoardName(randomBoardNameForUpdate)
+        Board board = createBoard(new ApiBuilder().setBoardOrListName(randomBoardNameForUpdate)
+                                                  .setDescription(randomBoardDescriptionForUpdate)
+                                                  .setBackground(color));
+
+        createdBoard = updateBoard(createdBoard.getId(), apiBuilder.setBoardOrListName(randomBoardNameForUpdate)
                                                                    .setDescription(randomBoardDescriptionForUpdate)
                                                                    .updBackground(color));
 
-        assertThat(createdBoard.getPrefs().getBackground(), equalTo(color));
+        assertThat(board, equalTo(createdBoard));
+        deleteBoard(board.getId());
+
+    }
+
+    @Test
+    public void getBoardListsTest() {
+        List<BoardList> boardLists = getBoardLists(createdBoard.getId());
+        for (BoardList list : boardLists) {
+            assertThat(list.getIdBoard(), equalTo(createdBoard.getId()));
+        }
+    }
+
+    @Test
+    public void createBoardListTest() {
+        randomBoardListName = generateRandomString();
+        BoardList boardList = createBoardList(new ApiBuilder().setBoardOrListName(randomBoardListName),
+            createdBoard.getId()
+        );
+        assertThat(boardList.getName(), equalTo(randomBoardListName));
 
     }
 

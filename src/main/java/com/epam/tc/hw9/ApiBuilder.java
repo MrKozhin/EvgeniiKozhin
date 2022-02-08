@@ -6,7 +6,7 @@ import java.util.Map;
 public class ApiBuilder {
     public Map<String, String> params = new HashMap<>();
 
-    public ApiBuilder setBoardName(String name) {
+    public ApiBuilder setBoardOrListName(String name) {
         params.put("name", name);
         return this;
     }

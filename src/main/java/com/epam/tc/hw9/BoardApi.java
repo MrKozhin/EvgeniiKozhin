@@ -1,12 +1,16 @@
 package com.epam.tc.hw9;
 
+import static com.epam.tc.hw9.Constants.LISTS;
 import static com.epam.tc.hw9.ServiceSpecification.requestSpecification;
 
 import com.epam.tc.hw9.beans.Board;
+import com.epam.tc.hw9.beans.BoardList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardApi {
 
@@ -58,11 +62,38 @@ public class BoardApi {
             .given(requestSpecification())
                 .with()
                 .queryParams(apiBuilder.params)
-                .log().all()
                 .put(id)
                 .prettyPeek());
     }
 
+    private static List<BoardList> getGsonForLists(Response response) {
+        return new Gson().fromJson(response.asString().trim(), new TypeToken<ArrayList<BoardList>>() {}
+            .getType());
+    }
 
+    private static BoardList getGsonForList(Response response) {
+        return new Gson().fromJson(response.asString().trim(), new TypeToken<BoardList>() {}
+            .getType());
+    }
+
+    public static List<BoardList> getBoardLists(String id) {
+        return getGsonForLists(RestAssured
+            .given(requestSpecification())
+                .with()
+                .log().all()
+                .get(id + LISTS)
+                .prettyPeek());
+    }
+
+    public static BoardList createBoardList(ApiBuilder apiBuilder, String id) {
+        return getGsonForList(RestAssured
+            .given(requestSpecification())
+                .with()
+                .queryParams(apiBuilder.params)
+                .log().all()
+            .post(id + LISTS)
+                .prettyPeek());
+
+    }
 
 }
