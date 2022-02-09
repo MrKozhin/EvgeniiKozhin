@@ -43,7 +43,6 @@ public class BoardApi {
             .given(requestSpecification())
                 .with()
                 .queryParams(apiBuilder.params)
-                .log().all()
                 .post()
                 .prettyPeek());
     }
