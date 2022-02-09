@@ -6,11 +6,11 @@ import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.ContentType.TEXT;
 import static org.hamcrest.Matchers.lessThan;
 
+import com.epam.tc.hw9.utils.ApiProperties;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.apache.commons.lang.RandomStringUtils;
 import org.apache.http.HttpStatus;
 
 public class ServiceSpecification {
@@ -28,13 +28,6 @@ public class ServiceSpecification {
         return new ResponseSpecBuilder()
             .expectResponseTime(lessThan(600L))
             .build();
-    }
-
-    public static String generateRandomString() {
-        int length = 10;
-        boolean useLetters = true;
-        boolean useNumbers = false;
-        return RandomStringUtils.random(length, useLetters, useNumbers);
     }
 
     public static ResponseSpecification notFoundSpecification() {

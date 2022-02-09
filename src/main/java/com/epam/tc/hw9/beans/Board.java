@@ -36,7 +36,6 @@ public class Board {
         return prefs;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -5,6 +5,7 @@
   <test name="Homework 09 Trello Api Board Test">
     <classes>
       <class name="com.epam.tc.hw9.BoardTest"/>
+      <class name="com.epam.tc.hw9.ListTest"/>
     </classes>
   </test>
 </suite>
