@@ -3,6 +3,7 @@ package com.epam.tc.hw2;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -35,10 +36,10 @@ public abstract class HW2BaseTest {
 
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(webDriver, 10);
+        webDriverWait = new WebDriverWait(webDriver, Duration.ofMillis(10000));
         softAssert = new SoftAssert();
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
 
 
         //        1. Open test site by URL
