@@ -20,8 +20,8 @@
     <assertj.version>3.21.0</assertj.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
 
-    <selenium-java.version>4.1.0</selenium-java.version>
-    <web-driver-manager.version>5.0.3</web-driver-manager.version>
+    <selenium-java.version>4.27.0</selenium-java.version>
+    <web-driver-manager.version>5.9.2</web-driver-manager.version>
 
     <allure.version>2.16.1</allure.version>
     <aspectj.version>1.9.8.RC2</aspectj.version>
