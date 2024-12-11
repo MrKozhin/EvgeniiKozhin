@@ -24,7 +24,7 @@
     <web-driver-manager.version>5.9.2</web-driver-manager.version>
 
     <allure.version>2.16.1</allure.version>
-    <aspectj.version>1.9.8.RC2</aspectj.version>
+    <aspectj.version>1.9.22.1</aspectj.version>
     <allure-maven-plugin.version>2.10.0</allure-maven-plugin.version>
 
     <cucumber-java.version>7.0.0</cucumber-java.version>
